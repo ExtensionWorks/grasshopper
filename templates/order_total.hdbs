@@ -1,0 +1,12 @@
+<div class="totals">
+  <div class="total_number">
+    <span>{{num_orders}}</span>
+    <span class="smaller">Orders</span>
+  </div>
+
+  <div class="total_dollars">
+    {{total}}
+  </div>
+
+  <div class="clear"></div>
+</div>

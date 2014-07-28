@@ -1,0 +1,16 @@
+<table class="order_table" id="order_table">
+  <tr>
+    <th>{{t "table_headings.order"}}</th>
+    <th>{{t "table_headings.date"}}</th>
+    <th>{{t "table_headings.products"}}</th>
+    <th>{{t "table_headings.total"}}</th>
+  </tr>
+  {{#each orders}}
+  <tr>
+    <td>{{this.id}}</td>
+    <td>{{this.created_at}}</td>
+    <td>{{this.line_items.length}}</td>
+    <td>{{this.total}}</td>
+  </tr>
+  {{/each}}
+</table>

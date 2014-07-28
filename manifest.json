@@ -1,0 +1,34 @@
+{
+    "name": "Zendesk Grasshopper",
+    "author": {
+        "name": "Extensionworks",
+        "email": "support@extensionworks.com"
+    },
+    "defaultLocale": "en",
+    "private": true,
+    "location": ["ticket_sidebar"],
+    "frameworkVersion": "1.0",
+    "parameters": [
+        {
+            "name": "woocommerce_url",
+            "type": "url",
+            "default": "https://nja.loadx.io", //remove this
+            "label": "Wordpress URL",
+            "helpText": "URL of your wordpress site"
+        },
+        {
+            "name": "woocommerce_api_consumer_key",
+            "type": "string",
+            "default": "ck_f1e1bd5d15dee529d75d5f90d6af4b7f",
+            "label": "Woocommerce API consumer key",
+            "helpText": "You can find this on the user details page in wordpress at the very bottom of the page"
+        },
+        {
+            "name": "woocommerce_api_consumer_secret",
+            "type": "string",
+            "default": "cs_db232802cc947a7c1ca0eb4ec64471ea",
+            "label": "Woocommerce API consumer secret",
+            "helpText": "You can find this on the user details page in wordpress at the very bottom of the page"
+        }
+    ]
+}

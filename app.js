@@ -1,3 +1,7 @@
+/* global btoa */
+/* global Tablesort */
+/* global accounting */
+
 (function() {
     'use strict';
 
@@ -25,7 +29,7 @@
                     url: helpers.fmt(CUSTOMER_ORDER_URL, this.setting('woocommerce_url'), customer_id),
                     method: 'GET',
                     proxy_v2: true
-                }
+                };
             }
         },
 
@@ -33,6 +37,7 @@
             'app.activated': 'initialize',
             'app.willDestroy': 'cleanUp',
             'getCustomer.done': 'customerRetrieved',
+            'getCustomer.fail': 'customerOrdersNone',
             'getCustomerOrders.done': 'customerOrdersRetrieved'
         },
 
@@ -41,6 +46,7 @@
             this.$('<script src="//cdnjs.cloudflare.com/ajax/libs/accounting.js/0.4.1/accounting.min.js">').appendTo('head');
             this.headers = {};
             this.headers.authorization = 'Basic ' + btoa(this.setting('woocommerce_api_consumer_key') + ':' + this.setting('woocommerce_api_consumer_secret'));
+            this.showSpinner(true);
             this.ajax('getCustomer', this.ticket().requester().email());
         },
 
@@ -49,7 +55,17 @@
         },
 
         customerOrdersRetrieved: function(data){
-            this.buildOrderTable(data);
+            if(data.orders.length > 0){
+                this.buildOrderTable(data);
+            } else {
+                this.switchTo('errors', {error_no_orders: true});
+            }
+            this.showSpinner(false);
+        },
+
+        customerOrdersNone: function(){
+            this.switchTo('errors', {error_no_customer: true});
+            this.showSpinner(false);
         },
 
         buildOrderTable: function(orderData){
@@ -58,26 +74,29 @@
             var self = this;
 
             _.each(orderData.orders, function(order){
+                total += parseFloat(order.total);
                 order.created_at = self.formatDate(order.created_at);
+                order.total = accounting.formatMoney(order.total);
                 orders.push(order);
-                total += parseFloat(order.total)
             });
 
+            this.switchTo('order_table', {
+                orders: orders,
+                num_orders: orders.length,
+                total: accounting.formatMoney(total)
+            });
 
-            this.$('.main').append(this.renderTemplate('order_table', {orders: orders}));
+            // add events to order table
             this.$('#order_table tr').click(function(){
                 self.$(this).closest("tr").siblings().removeClass('selected');
                 self.$(this).toggleClass('selected');
             });
             new Tablesort(this.$('#order_table')[0]);
-
-
-            this.$('.main').append(this.renderTemplate('order_total', {total: accounting.formatMoney(total), num_orders: orders.length}));
         },
 
-        formatDate: function(date){
-            var date =  new Date(date);
-            return date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear()
+        formatDate: function(dateString){
+            var date =  new Date(dateString);
+            return date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear();
         },
 
         showSpinner: function(show) {

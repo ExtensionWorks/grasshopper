@@ -1,0 +1,59 @@
+{
+    "app": {
+        "package": "zendesk_rest_api_sample",
+        "description": {
+            "value": "Show off Zendesk REST API and this.currentLocation() API",
+            "title": "app description"
+        }
+    },
+
+    "intro_text": {
+        "value": "Fetching orders for",
+        "title": "Text to display initially while order data is being rettrieved"
+    },
+
+    "order_blurb":{
+        "value": "Below is the woocommerce order information for orders placed by",
+        "title": "Description parapgrah about order table"
+    },
+
+    "order_plural": {
+        "value": "Orders",
+        "title": "Translated word for 'orders'"
+    },
+
+    "errors": {
+        "no_customer": {
+            "value": "No customer was found in woocommerce matching email-address",
+            "title": "Error for when no customer exists"
+        },
+        "no_orders": {
+            "value": "No orders found for customer",
+            "title": "Error for when no orders are found"
+        }
+    },
+
+    "table_headings":{
+        "order": {
+            "value": "Order #",
+            "title": "Order id column in order table"
+        },
+        "date": {
+            "value": "Date",
+            "title": "Date of order"
+        },
+        "products": {
+            "value": "Products",
+            "title": "Number of ordered products"
+        },
+        "total": {
+            "value": "Total",
+            "title": "Total for this order"
+        }
+    },
+
+    "logo": {
+        "value": "App logo",
+        "title": "app logo alt"
+    }
+}

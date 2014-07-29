@@ -1,3 +1,6 @@
+<p>{{t "order_blurb"}} <a href="mailto:{{ticker.requester.email}}">{{ticket.requester.name}}</a></p>
+<br />
+
 <table class="order_table" id="order_table">
   <tr>
     <th>{{t "table_headings.order"}}</th>
@@ -14,3 +17,14 @@
   </tr>
   {{/each}}
 </table>
+
+<div class="totals">
+  <div class="total_number">
+    <span>{{num_orders}}</span>
+    <span class="smaller">{{t "order_plural"}}</span>
+  </div>
+  <div class="total_dollars">
+    {{total}}
+  </div>
+  <div class="clear"></div>
+</div>

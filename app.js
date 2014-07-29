@@ -5,7 +5,6 @@
 (function() {
     'use strict';
 
-    // var CUSTOMER_URL = '%@/wc-api/v1/customers/email/%@';
     var CUSTOMER_URL = '%@/wc-api/v1/customers/email/%@';
     var CUSTOMER_ORDER_URL = '%@/wc-api/v1/customers/%@/orders';
 

@@ -13,6 +13,10 @@ a{
     display: none;
 }
 
+.help {
+    display: none;
+}
+
 .order_table td, .order_table th {
     border: 1px solid #dfdfdf;
     padding: 6px;

@@ -17,16 +17,26 @@ a{
     display: none;
 }
 
-.order_table td, .order_table th {
+.order_table, .product_table {
+    table-layout: fixed;
+    position: relative;
+    width: 100%;
+}
+
+.product_table {
+    table-layout: auto;
+}
+
+.order_table td, .order_table th, .product_table td,  .product_table th{
     border: 1px solid #dfdfdf;
     padding: 6px;
 }
 
-.order_table th {
+.order_table th, .product_table th {
     background-color: #f7f7f7;
 }
 
-.order_table tr:nth-child(odd) {
+.order_table tr:nth-child(odd), .product_table tr:nth-child(odd) {
     background-color: #f7f7f7;
 }
 

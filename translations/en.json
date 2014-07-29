@@ -14,12 +14,17 @@
 
     "order_blurb":{
         "value": "Below is the woocommerce order information for orders placed by",
-        "title": "Description parapgrah about order table"
+        "title": "Description paragraph about order table"
     },
 
     "order_plural": {
         "value": "Orders",
         "title": "Translated word for 'orders'"
+    },
+
+    "product_go_back": {
+        "value": "Go back to orders",
+        "title": "Text link to return back to the orders table"
     },
 
     "errors": {
@@ -33,7 +38,7 @@
         }
     },
 
-    "table_headings":{
+    "table_order_headings":{
         "order": {
             "value": "Order #",
             "title": "Order id column in order table"
@@ -51,6 +56,22 @@
             "title": "Total for this order"
         }
     },
+
+    "table_product_headings":{
+        "sku": {
+            "value": "SKU",
+            "title": "Stock keeping unit column in product table"
+        },
+        "name": {
+            "value": "Name",
+            "title": "Name column in product table"
+        },
+        "total": {
+            "value": "Total",
+            "title": "Total price of this product"
+        }
+    },
+
 
     "logo": {
         "value": "App logo",

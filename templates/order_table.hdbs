@@ -1,15 +1,15 @@
 <p>{{t "order_blurb"}} <a href="mailto:{{ticker.requester.email}}">{{ticket.requester.name}}</a></p>
 <br />
 
-<table class="order_table" id="order_table">
+<table class="order_table">
   <tr>
-    <th>{{t "table_headings.order"}}</th>
-    <th>{{t "table_headings.date"}}</th>
-    <th>{{t "table_headings.products"}}</th>
-    <th>{{t "table_headings.total"}}</th>
+    <th>{{t "table_order_headings.order"}}</th>
+    <th>{{t "table_order_headings.date"}}</th>
+    <th>{{t "table_order_headings.products"}}</th>
+    <th>{{t "table_order_headings.total"}}</th>
   </tr>
   {{#each orders}}
-  <tr>
+  <tr data-order-id={{@index}} class="clickable">
     <td>{{this.id}}</td>
     <td>{{this.created_at}}</td>
     <td>{{this.line_items.length}}</td>

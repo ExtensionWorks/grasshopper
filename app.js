@@ -37,7 +37,9 @@
             'app.willDestroy': 'cleanUp',
             'getCustomer.done': 'customerRetrieved',
             'getCustomer.fail': 'customerOrdersNone',
-            'getCustomerOrders.done': 'customerOrdersRetrieved'
+            'getCustomerOrders.done': 'customerOrdersRetrieved',
+            'click .order_table tr.clickable': 'viewProducts',
+            'click .gotoOrders': 'goToOrders'
         },
 
         initialize: function() {
@@ -54,6 +56,14 @@
         },
 
         customerOrdersRetrieved: function(data){
+            //reset order cache
+            this.cache = {};
+            this.cache.orders = [];
+            this.cache.total = 0;
+
+            //reset the position
+            this.slideOrders = false;
+
             if(data.orders.length > 0){
                 this.buildOrderTable(data);
             } else {
@@ -68,29 +78,59 @@
         },
 
         buildOrderTable: function(orderData){
-            var orders = [];
             var total = 0;
             var self = this;
 
             _.each(orderData.orders, function(order){
-                total += parseFloat(order.total);
+                self.cache.total += parseFloat(order.total);
                 order.created_at = self.formatDate(order.created_at);
                 order.total = accounting.formatMoney(order.total);
-                orders.push(order);
+
+                // add to cache
+                self.cache.orders.push(order);
             });
+
+            this.goToOrders();
+        },
+
+        goToOrders: function(){
+            this.$('.order_table').css({left: 'auto'});
 
             this.switchTo('order_table', {
-                orders: orders,
-                num_orders: orders.length,
-                total: accounting.formatMoney(total)
+                orders: this.cache.orders,
+                num_orders: this.cache.orders.length,
+                total: accounting.formatMoney(this.cache.total)
             });
 
-            // add events to order table
-            this.$('#order_table tr').click(function(){
-                self.$(this).closest("tr").siblings().removeClass('selected');
-                self.$(this).toggleClass('selected');
+            if(this.slideOrders === true){
+                this.$('.order_table').css({opacity: 0, left: '-499px'});
+                this.$('.order_table').css({opacity: 1});
+                this.$('.order_table').animate({left: '0'}, 300);
+            }
+
+            new Tablesort(this.$('.order_table')[0]);
+        },
+
+        goToProducts: function(items){
+            this.switchTo('products_table', {products: items});
+            new Tablesort(this.$('.product_table')[0]);
+        },
+
+        viewProducts:function(e){
+            var self = this;
+            var parentRow = this.$(e.target).closest('tr');
+
+            // remove highlight for all other rows
+            parentRow.siblings().removeClass('selected');
+
+            // highlight clicked row
+            parentRow.toggleClass('selected');
+
+            this.slideOrders = true;
+            this.$('.order_table').animate({left: '-499px'}, 400, function(){
+                var orderItems = self.cache.orders[parentRow.data('order-id')].line_items;
+                self.goToProducts(orderItems);
             });
-            new Tablesort(this.$('#order_table')[0]);
         },
 
         formatDate: function(dateString){

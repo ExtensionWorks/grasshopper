@@ -68,16 +68,18 @@
                 total += parseFloat(order.total)
             });
 
+            this.switchTo('order_table', {
+                orders: orders,
+                num_orders: orders.length,
+                total: accounting.formatMoney(total)
+            });
 
-            this.$('.main').append(this.renderTemplate('order_table', {orders: orders}));
+            // add events to order table
             this.$('#order_table tr').click(function(){
                 self.$(this).closest("tr").siblings().removeClass('selected');
                 self.$(this).toggleClass('selected');
             });
             new Tablesort(this.$('#order_table')[0]);
-
-
-            this.$('.main').append(this.renderTemplate('order_total', {total: accounting.formatMoney(total), num_orders: orders.length}));
         },
 
         formatDate: function(dateString){

@@ -1,0 +1,15 @@
+<header>
+  <span class="logo"></span>
+  <h3>{{setting "name"}}</h3>
+  <a href="#" class="help">?</a>
+</header>
+
+<section class="navigation">
+</section>
+
+<section class="main" data-main>
+  {{t "intro_text"}}
+  <a href="mailto:{{ticker.requester.email}}">{{ticket.requester.name}}</a>
+</section>
+
+<div class="loading_spinner">{{spinner}}</div>

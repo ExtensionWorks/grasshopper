@@ -76,8 +76,8 @@
             _.each(orderData.orders, function(order){
                 total += parseFloat(order.total);
                 order.created_at = self.formatDate(order.created_at);
+                order.total = accounting.formatMoney(order.total);
                 orders.push(order);
-                total += parseFloat(order.total)
             });
 
             this.switchTo('order_table', {

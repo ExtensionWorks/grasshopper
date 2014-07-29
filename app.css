@@ -3,7 +3,10 @@ div.clear{
 }
 
 .loading {
-    opacity: 0.5;
+}
+
+a{
+    text-decoration: underline;
 }
 
 .loading_spinner {

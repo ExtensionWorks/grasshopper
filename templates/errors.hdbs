@@ -1,0 +1,7 @@
+{{#if error_no_customer}}
+  {{t "errors.no_customer"}} {{ticket.requester.email}}
+{{/if}}
+
+{{#if error_no_orders}}
+  {{t "errors.no_orders"}} <a href="mailto:{{ticker.requester.email}}">{{ticket.requester.name}}</a>
+{{/if}}

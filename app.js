@@ -37,6 +37,7 @@
             'app.activated': 'initialize',
             'app.willDestroy': 'cleanUp',
             'getCustomer.done': 'customerRetrieved',
+            'getCustomer.fail': 'customerOrdersNone',
             'getCustomerOrders.done': 'customerOrdersRetrieved'
         },
 
@@ -45,6 +46,7 @@
             this.$('<script src="//cdnjs.cloudflare.com/ajax/libs/accounting.js/0.4.1/accounting.min.js">').appendTo('head');
             this.headers = {};
             this.headers.authorization = 'Basic ' + btoa(this.setting('woocommerce_api_consumer_key') + ':' + this.setting('woocommerce_api_consumer_secret'));
+            this.showSpinner(true);
             this.ajax('getCustomer', this.ticket().requester().email());
         },
 
@@ -53,7 +55,17 @@
         },
 
         customerOrdersRetrieved: function(data){
-            this.buildOrderTable(data);
+            if(data.orders.length > 0){
+                this.buildOrderTable(data);
+            } else {
+                this.switchTo('errors', {error_no_orders: true});
+            }
+            this.showSpinner(false);
+        },
+
+        customerOrdersNone: function(){
+            this.switchTo('errors', {error_no_customer: true});
+            this.showSpinner(false);
         },
 
         buildOrderTable: function(orderData){

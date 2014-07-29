@@ -1,3 +1,7 @@
+/* global btoa */
+/* global Tablesort */
+/* global accounting */
+
 (function() {
     'use strict';
 
@@ -25,7 +29,7 @@
                     url: helpers.fmt(CUSTOMER_ORDER_URL, this.setting('woocommerce_url'), customer_id),
                     method: 'GET',
                     proxy_v2: true
-                }
+                };
             }
         },
 
@@ -58,6 +62,7 @@
             var self = this;
 
             _.each(orderData.orders, function(order){
+                total += parseFloat(order.total);
                 order.created_at = self.formatDate(order.created_at);
                 orders.push(order);
                 total += parseFloat(order.total)
@@ -75,9 +80,9 @@
             this.$('.main').append(this.renderTemplate('order_total', {total: accounting.formatMoney(total), num_orders: orders.length}));
         },
 
-        formatDate: function(date){
-            var date =  new Date(date);
-            return date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear()
+        formatDate: function(dateString){
+            var date =  new Date(dateString);
+            return date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear();
         },
 
         showSpinner: function(show) {

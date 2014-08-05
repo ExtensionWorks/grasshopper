@@ -1,7 +1,4 @@
-<p>{{t "order_blurb"}} <a href="mailto:{{ticker.requester.email}}">{{ticket.requester.name}}</a></p>
-<br />
-
-<table class="order_table">
+<table class="order_table table table-bordered table-condensed">
   <tr>
     <th>{{t "table_order_headings.order"}}</th>
     <th>{{t "table_order_headings.date"}}</th>

@@ -7,6 +7,8 @@ div.clear{
 
 a{
     text-decoration: underline;
+    color: #555;
+}
 }
 
 .loading_spinner {
@@ -27,22 +29,24 @@ a{
     table-layout: auto;
 }
 
-.order_table td, .order_table th, .product_table td,  .product_table th{
-    border: 1px solid #dfdfdf;
-    padding: 6px;
+.table > thead > tr > td.success,
+.table > tbody > tr > td.success,
+.table > tfoot > tr > td.success,
+.table > thead > tr > th.success,
+.table > tbody > tr > th.success,
+.table > tfoot > tr > th.success,
+.table > thead > tr.success > td,
+.table > tbody > tr.success > td,
+.table > tfoot > tr.success > td,
+.table > thead > tr.success > th,
+.table > tbody > tr.success > th,
+.table > tfoot > tr.success > th,
+.order_table tr.selected {
+  background-color: #dff0d8;
 }
 
-.order_table th, .product_table th {
-    background-color: #f7f7f7;
-}
-
-.order_table tr:nth-child(odd), .product_table tr:nth-child(odd) {
-    background-color: #f7f7f7;
-}
-
-.order_table tr.selected td {
-    background-color: #8faf26;
-    color: #FFF;
+.order_table.table tr:hover th, .product_table.table tr:hover th{
+    background-color: #e6e6e6;
 }
 
 .totals{
@@ -87,6 +91,7 @@ a{
 /* Sort table */
 th.sort-header {
     cursor:pointer;
+    background-color: #e6e6e6;
 }
 th.sort-header::-moz-selection,
 th.sort-header::selection {

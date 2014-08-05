@@ -43,6 +43,10 @@
             "value": "Order #",
             "title": "Order id column in order table"
         },
+        "order_hover": {
+            "value": "Click to view order #",
+            "title": "Hover text for order id link"
+        },
         "date": {
             "value": "Date",
             "title": "Date of order"

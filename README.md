@@ -10,8 +10,8 @@ You may sort the customer order summary information using any of the column head
 See https://help.extensionworks.com/hc/communities/public/topics/200114903 for detailed documentation or troubleshooting.
 
 ## Preview
-![Screenshot](../master/screenshot.jpg?raw=true =339)
-
+![Screenshot](../master/screenshots/screenshot_products.jpg?raw=true =339)
+![Screenshot](../master/screenshots/screenshot_orders.jpg?raw=true =339)
 
 
 ## Requirements
@@ -33,5 +33,5 @@ To install the app:
 
 
 ## Copyright and License
-Copyright 2014, [Extension Works](http://www.extensionworks.com).
+Copyright 2014, [Extension Works](http://www.extensionworks.com).  
 Licensed under MIT.

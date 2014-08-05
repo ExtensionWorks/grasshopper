@@ -38,8 +38,9 @@
             'getCustomer.done': 'customerRetrieved',
             'getCustomer.fail': 'customerOrdersNone',
             'getCustomerOrders.done': 'customerOrdersRetrieved',
-            'click .order_table tr.clickable': 'viewProducts',
-            'click .gotoOrders': 'goToOrders'
+            'click .order_table tr.clickable': 'highlightRow',
+            'click .gotoOrders': 'goToOrders',
+            'click .badge a': 'slideToProducts',
         },
 
         initialize: function() {
@@ -93,6 +94,17 @@
             this.goToOrders();
         },
 
+        slideToProducts: function(e){
+            var self = this;
+            var parentRow = this.$(e.target).closest('tr');
+
+            this.slideOrders = true;
+            this.$('.order_table').animate({left: '-499px'}, 400, function(){
+                var orderItems = self.cache.orders[parentRow.data('order-id')].line_items;
+                self.goToProducts(orderItems);
+            });
+        },
+
         goToOrders: function(){
             this.$('.order_table').css({left: 'auto'});
 
@@ -116,21 +128,15 @@
             new Tablesort(this.$('.product_table')[0]);
         },
 
-        viewProducts:function(e){
+        highlightRow: function(e){
             var self = this;
             var parentRow = this.$(e.target).closest('tr');
 
             // remove highlight for all other rows
-            parentRow.siblings().removeClass('selected');
+            parentRow.siblings().removeClass('success');
 
             // highlight clicked row
-            parentRow.toggleClass('selected');
-
-            this.slideOrders = true;
-            this.$('.order_table').animate({left: '-499px'}, 400, function(){
-                var orderItems = self.cache.orders[parentRow.data('order-id')].line_items;
-                self.goToProducts(orderItems);
-            });
+            parentRow.toggleClass('success');
         },
 
         formatDate: function(dateString){

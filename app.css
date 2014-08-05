@@ -9,6 +9,9 @@ a{
     text-decoration: underline;
     color: #555;
 }
+
+.badge a{
+    color: #FFF;
 }
 
 .loading_spinner {

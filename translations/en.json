@@ -55,6 +55,10 @@
             "value": "Products",
             "title": "Number of ordered products"
         },
+        "products_hover": {
+            "value": "Click to view line items in order #",
+            "title": "Hover text for product link"
+        },
         "total": {
             "value": "Total",
             "title": "Total for this order"

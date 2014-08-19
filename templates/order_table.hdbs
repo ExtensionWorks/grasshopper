@@ -1,16 +1,27 @@
-<table class="order_table" id="order_table">
+<table class="order_table table table-bordered table-condensed">
   <tr>
-    <th>{{t "table_headings.order"}}</th>
-    <th>{{t "table_headings.date"}}</th>
-    <th>{{t "table_headings.products"}}</th>
-    <th>{{t "table_headings.total"}}</th>
+    <th>{{t "table_order_headings.order"}}</th>
+    <th>{{t "table_order_headings.date"}}</th>
+    <th>{{t "table_order_headings.products"}}</th>
+    <th>{{t "table_order_headings.total"}}</th>
   </tr>
   {{#each orders}}
-  <tr>
-    <td>{{this.id}}</td>
+  <tr data-order-id={{@index}} class="clickable">
+    <td><a title="{{t "table_order_headings.order_hover"}}{{this.id}}" target="_blank" href="{{setting "woocommerce_url"}}/wp-admin/post.php?post={{this.id}}&action=edit">{{this.id}}</a></td>
     <td>{{this.created_at}}</td>
-    <td>{{this.line_items.length}}</td>
+    <td style="text-align: center;"><span class="badge badge-success"><a title="{{t "table_order_headings.products_hover"}}{{this.id}}" href="">{{this.line_items.length}}</a></span></td>
     <td>{{this.total}}</td>
   </tr>
   {{/each}}
 </table>
+
+<div class="totals">
+  <div class="total_number">
+    <span>{{num_orders}}</span>
+    <span class="smaller">{{t "order_plural"}}</span>
+  </div>
+  <div class="total_dollars">
+    {{total}}
+  </div>
+  <div class="clear"></div>
+</div>

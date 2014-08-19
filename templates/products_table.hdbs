@@ -1,0 +1,17 @@
+<a class="gotoOrders">{{t "product_go_back"}}</a>
+<br /><br />
+
+<table class="product_table table table-bordered table-condensed">
+  <tr>
+    <th>{{t "table_product_headings.sku"}}</th>
+    <th>{{t "table_product_headings.name"}}</th>
+    <th>{{t "table_product_headings.total"}}</th>
+  </tr>
+  {{#each products}}
+  <tr>
+    <td>{{this.sku}}</td>
+    <td>{{this.name}}</td>
+    <td>{{this.total}}</td>
+  </tr>
+  {{/each}}
+</table>

@@ -1,0 +1,88 @@
+{
+    "app": {
+        "package": "zendesk_rest_api_sample",
+        "description": {
+            "value": "Show off Zendesk REST API and this.currentLocation() API",
+            "title": "app description"
+        }
+    },
+
+    "intro_text": {
+        "value": "Fetching orders for",
+        "title": "Text to display initially while order data is being rettrieved"
+    },
+
+    "order_blurb":{
+        "value": "Below is the woocommerce order information for orders placed by",
+        "title": "Description paragraph about order table"
+    },
+
+    "order_plural": {
+        "value": "Orders",
+        "title": "Translated word for 'orders'"
+    },
+
+    "product_go_back": {
+        "value": "Go back to orders",
+        "title": "Text link to return back to the orders table"
+    },
+
+    "errors": {
+        "no_customer": {
+            "value": "No customer was found in woocommerce matching email-address",
+            "title": "Error for when no customer exists"
+        },
+        "no_orders": {
+            "value": "No orders found for customer",
+            "title": "Error for when no orders are found"
+        }
+    },
+
+    "table_order_headings":{
+        "order": {
+            "value": "Order #",
+            "title": "Order id column in order table"
+        },
+        "order_hover": {
+            "value": "Click to view order #",
+            "title": "Hover text for order id link"
+        },
+        "date": {
+            "value": "Date",
+            "title": "Date of order"
+        },
+        "products": {
+            "value": "Products",
+            "title": "Number of ordered products"
+        },
+        "products_hover": {
+            "value": "Click to view line items in order #",
+            "title": "Hover text for product link"
+        },
+        "total": {
+            "value": "Total",
+            "title": "Total for this order"
+        }
+    },
+
+    "table_product_headings":{
+        "sku": {
+            "value": "SKU",
+            "title": "Stock keeping unit column in product table"
+        },
+        "name": {
+            "value": "Name",
+            "title": "Name column in product table"
+        },
+        "total": {
+            "value": "Total",
+            "title": "Total price of this product"
+        }
+    },
+
+
+    "logo": {
+        "value": "App logo",
+        "title": "app logo alt"
+    }
+}

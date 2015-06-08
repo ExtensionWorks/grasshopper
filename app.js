@@ -5,17 +5,18 @@
 (function() {
     'use strict';
 
-    var CUSTOMER_URL = '%@/wc-api/v1/customers/email/%@';
-    var CUSTOMER_ORDER_URL = '%@/wc-api/v1/customers/%@/orders';
+    var CUSTOMER_URL = '%@/wc-api/v2/customers/email/%@?oauth_consumer_key=%@';
+    var CUSTOMER_ORDER_URL = '%@/wc-api/v2/customers/%@/orders?oauth_consumer_key=%@';
 
     return {
         requests: {
             getCustomer: function(email){
+
                 return {
                     headers: {
                         'Authorization': this.headers.authorization
                     },
-                    url: helpers.fmt(CUSTOMER_URL, this.setting('woocommerce_url'), email),
+                    url: helpers.fmt(CUSTOMER_URL, this.setting('woocommerce_url'), email,this.setting('woocommerce_api_consumer_key')),
                     method: 'GET',
                     proxy_v2: true
                 };
@@ -25,7 +26,7 @@
                     headers: {
                         'Authorization': this.headers.authorization
                     },
-                    url: helpers.fmt(CUSTOMER_ORDER_URL, this.setting('woocommerce_url'), customer_id),
+                    url: helpers.fmt(CUSTOMER_ORDER_URL, this.setting('woocommerce_url'), customer_id,this.setting('woocommerce_api_consumer_key')),
                     method: 'GET',
                     proxy_v2: true
                 };

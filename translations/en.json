@@ -1,6 +1,6 @@
 {
     "app": {
-    "name": "name",
+    "name": "grasshopper-develop",
     "short_description": "See WooCommerce orders",
     "long_description": "See what your WooCommerce customers have ordered",
     "installation_instructions": "Simply click the install button",

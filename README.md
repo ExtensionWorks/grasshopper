@@ -4,7 +4,7 @@ Grasshopper
 ## Overview
 This is a Zendesk App for connecting Zendesk to WooCommerce. When viewing a ticket inside of Zendesk Grasshoppper will pull the customers order details from WooCommerce and display this in a beautiful widget inside of your Zendesk console in the sidebar area.
 
-You may sort the customer order summary information using any of the column headings in the generated table (hover over the appopriate heading to reveal the sorting arrows).
+You may sort the customer order summary information using any of the column headings in the generated table (hover over the appropriate heading to reveal the sorting arrows).
 
 ## Documentation
 See https://help.extensionworks.com/hc/communities/public/topics/200114903 for detailed documentation or troubleshooting.
@@ -33,5 +33,5 @@ To install the app:
 
 
 ## Copyright and License
-Copyright 2014, [Extension Works](http://www.extensionworks.com).  
+Copyright 2019, [Extension Works](http://www.extensionworks.com).  
 Licensed under MIT.

@@ -45,6 +45,7 @@
         },
 
         initialize: function() {
+	        this.$('<script src="//static.zdassets.com/zendesk_app_framework_sdk/2.0/zaf_sdk.min.js">').appendTo('head');
             this.$('<script src="//cdnjs.cloudflare.com/ajax/libs/tablesort/1.6.1/tablesort.min.js">').appendTo('head');
             this.$('<script src="//cdnjs.cloudflare.com/ajax/libs/accounting.js/0.4.1/accounting.min.js">').appendTo('head');
             this.headers = {};
@@ -52,6 +53,8 @@
             this.showSpinner(true);
             this.ajax('getCustomer', this.ticket().requester().email());
         },
+        
+        var client = ZAFClient.init();
 
         customerRetrieved: function(data){
             this.ajax('getCustomerOrders', data.customer.id);

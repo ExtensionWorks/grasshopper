@@ -6,8 +6,8 @@
     },
     "defaultLocale": "en",
     "private": true,
-    "location": ["ticket_sidebar"],
-    "frameworkVersion": "1.0",
+    "location": ["ticket_sidebar", "new_ticket_sidebar"],
+    "frameworkVersion": "2.0",
     "parameters": [
         {
             "name": "woocommerce_url",

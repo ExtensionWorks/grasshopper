@@ -2,7 +2,8 @@
     "name": "Zendesk Grasshopper",
     "author": {
         "name": "Extensionworks",
-        "email": "support@extensionworks.com"
+        "email": "support@extensionworks.com",
+        "url": "https://www.extensionworks.com"
     },
     "defaultLocale": "en",
     "private": true,
